@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <!-- for mobile-friendly pages -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=Socialfy content="">
+    <title>{{ page_title }}</title>
+    <link rel='stylesheet' href="{{url_for('static', filename = 'style.css')}}">
+
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div id="messages">
+  {% for msg in messages %}
+  <p>{{msg}}</p>
+  {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+
+{% block main_content %}
+
+{% block form %}
+<div class = "login-page">
+  <h1 > Log In </h1>
+  <div class = "login-form">
+    <form method = 'POST' action = "{{url_for('login')}}">
+      <input type="text" required name="username" placeholder = "username">
+      <br>
+      <br>
+      <input type="password" required name="password" placeholder= "password">
+      <br>
+      <br>
+      <button > Log in </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% endblock %}
